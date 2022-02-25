@@ -6,15 +6,15 @@ import express from "express";
 import colors from "colors";
 import cors from "cors";
 
+//importing the routes...
+import router from "./routes/restaurantsRoutes.js";
 const app = express();
 
 //using cors so we can make request from other domains
 app.use(cors());
 app.use(express.json());
 
-app.use("/api/v1/restaurants", (req, res) => {
-  res.status(200).json({ message: "connected" });
-});
+app.use("/api/v1/restaurants", router);
 //serv frontend
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, "../frontend/build")));

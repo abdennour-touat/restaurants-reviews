@@ -13,6 +13,7 @@ const app = express();
 //using cors so we can make request from other domains
 app.use(cors());
 app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
 app.use("/api/v1/restaurants", router);
 //serv frontend

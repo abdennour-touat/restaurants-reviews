@@ -2,8 +2,17 @@ import express from "express";
 
 const router = express.Router();
 
-import { getRestaurants } from "../controllers/restaurantsControllers.js";
+import {
+  addGrade,
+  deleteGrade,
+  getCuisines,
+  searchRestaurant,
+  updateGrade,
+} from "../controllers/restaurantsControllers.js";
 
-router.route("/").get(getRestaurants);
+router.route("/").get(searchRestaurant);
+
+router.route("/review/:id").post(addGrade).put(updateGrade).delete(deleteGrade);
+router.route("/cuisines").get(getCuisines);
 
 export default router;
